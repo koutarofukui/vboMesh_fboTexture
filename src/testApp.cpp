@@ -98,7 +98,7 @@ void testApp::draw(){
 	// we don't care about alpha blending in this example, and by default alpha blending is on in openFrameworks > 0.8.0
 	// so we de-activate it for now.
 	//ofDisableAlphaBlending();
-    ofDisableArbTex();
+    //ofDisableArbTex();
 
         //texture FBO
         fbo.begin();
@@ -109,7 +109,7 @@ void testApp::draw(){
             ofCircle(WIDTH/2, HEIGHT/2, size);
         fbo.end();
     
-    ofEnableArbTex();
+    //ofEnableArbTex();
     
 	ofBackgroundGradient(ofColor(18,33,54), ofColor(18,22,28));
 	

@@ -30,16 +30,20 @@ void main()
 
 	float instanceX = float(gl_InstanceID%(iCount) - iCount/2) / 128.0;
 	float instanceY = float(gl_InstanceID/(iCount) - iCount/2) / 128.0;
+    int xc = gl_InstanceID%(iCount);  
+    int yc = gl_InstanceID/(iCount);  
 
+    //gl_TexCoord[0] = gl_MultiTexCood0;
 
-    vec4 pixelDepth = texture(tex0,vec2(instanceX +fCount/2.0 , instanceY +fCount/2.0));
-
+    //vec4 pixelDepth = texture(tex0,vec2(instanceX +fCount/2.0 , instanceY +fCount/2.0));
+    vec4 pixelDepth = texture(tex0,vec2(xc,yc));  
+    //vec4 pixelDepth = texture(tex0,gl_TexCoord[0].st);
 	
     colorVarying = vec4(globalColor.rgba);
 	
 	vec4 vPos = position;
 
-    vPos.z += vPos.z * pixelDepth.r * 200;
+    vPos.z += vPos.z * pixelDepth.r * 2000;
 
 	vPos = vPos + vec4(instanceX*20*128,instanceY*10*128, 0,0);
     
